@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Compact styled-static dashboard variant for plan plan-8b2622fa."
+    />
+    <title>Compact dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="Minimal dashboard home">
+          <span class="brand-mark" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+          </span>
+          <span>minimal</span>
+        </a>
+
+        <div class="workspace">
+          <img src="../../../public/assets/images/avatar/avatar-25.webp" alt="" />
+          <div>
+            <strong>Team workspace</strong>
+            <span>Free</span>
+          </div>
+          <button type="button" aria-label="Switch workspace">⌄</button>
+        </div>
+
+        <nav aria-label="Dashboard navigation">
+          <p>Overview</p>
+          <a class="active" href="#"><span>⌂</span> Dashboard</a>
+          <a href="#"><span>◎</span> User</a>
+          <a href="#"><span>◇</span> Product</a>
+          <a href="#"><span>▤</span> Blog</a>
+          <p>Management</p>
+          <a href="#"><span>◫</span> Orders <b>4</b></a>
+          <a href="#"><span>□</span> Invoices</a>
+        </nav>
+
+        <div class="upgrade">
+          <strong>Need more?</strong>
+          <span>Unlock the full dashboard kit.</span>
+          <button type="button">Upgrade</button>
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <button class="mobile-menu" type="button" aria-label="Open menu">☰</button>
+          <label class="search">
+            <span aria-hidden="true">⌕</span>
+            <input aria-label="Search dashboard" placeholder="Search..." />
+            <kbd>⌘ K</kbd>
+          </label>
+          <div class="header-actions">
+            <button type="button" aria-label="Language">🇺🇸</button>
+            <button type="button" aria-label="Notifications">●</button>
+            <img src="../../../public/assets/images/avatar/avatar-25.webp" alt="User profile" />
+          </div>
+        </header>
+
+        <section class="content">
+          <div class="page-heading">
+            <div>
+              <p>Thursday, November 5</p>
+              <h1>Hi, welcome back <span aria-hidden="true">👋</span></h1>
+            </div>
+            <button type="button">Download report</button>
+          </div>
+
+          <div class="metrics">
+            <article class="metric metric-green">
+              <div class="metric-top">
+                <img src="../../../public/assets/icons/glass/ic-glass-bag.svg" alt="" />
+                <span>↗ +2.6%</span>
+              </div>
+              <p>Weekly sales</p>
+              <strong>714k</strong>
+              <svg viewBox="0 0 160 42" role="img" aria-label="Weekly sales rising trend">
+                <path d="M2 32 C18 36 20 18 36 25 S56 8 72 16 S94 3 109 10 S131 3 158 8" />
+              </svg>
+            </article>
+
+            <article class="metric metric-blue">
+              <div class="metric-top">
+                <img src="../../../public/assets/icons/glass/ic-glass-users.svg" alt="" />
+                <span class="negative">↘ -0.1%</span>
+              </div>
+              <p>New users</p>
+              <strong>1.35m</strong>
+              <svg viewBox="0 0 160 42" role="img" aria-label="New users mixed trend">
+                <path d="M2 18 C24 12 27 30 48 22 S75 30 93 13 S123 34 158 18" />
+              </svg>
+            </article>
+
+            <article class="metric metric-amber">
+              <div class="metric-top">
+                <img src="../../../public/assets/icons/glass/ic-glass-buy.svg" alt="" />
+                <span>↗ +2.8%</span>
+              </div>
+              <p>Purchase orders</p>
+              <strong>1.72m</strong>
+              <svg viewBox="0 0 160 42" role="img" aria-label="Purchase orders rising trend">
+                <path d="M2 29 C18 11 31 16 45 24 S70 4 87 19 S112 8 126 22 S143 10 158 12" />
+              </svg>
+            </article>
+
+            <article class="metric metric-red">
+              <div class="metric-top">
+                <img src="../../../public/assets/icons/glass/ic-glass-message.svg" alt="" />
+                <span>↗ +3.6%</span>
+              </div>
+              <p>Messages</p>
+              <strong>234</strong>
+              <svg viewBox="0 0 160 42" role="img" aria-label="Messages rising trend">
+                <path d="M2 25 C22 31 27 9 44 18 S66 32 84 21 S105 6 124 15 S144 7 158 4" />
+              </svg>
+            </article>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="card visits">
+              <div class="card-heading">
+                <div>
+                  <h2>Website visits</h2>
+                  <p><strong>+43%</strong> than last year</p>
+                </div>
+                <button type="button" aria-label="Website visits options">•••</button>
+              </div>
+              <div class="legend"><span>● Team A</span><span>● Team B</span></div>
+              <div class="chart">
+                <div class="y-axis"><span>80k</span><span>60k</span><span>40k</span><span>20k</span><span>0</span></div>
+                <div class="bar-groups" aria-label="Website visits bar chart">
+                  <div><i style="height: 48%"></i><b style="height: 62%"></b><span>Jan</span></div>
+                  <div><i style="height: 38%"></i><b style="height: 82%"></b><span>Feb</span></div>
+                  <div><i style="height: 26%"></i><b style="height: 56%"></b><span>Mar</span></div>
+                  <div><i style="height: 46%"></i><b style="height: 76%"></b><span>Apr</span></div>
+                  <div><i style="height: 78%"></i><b style="height: 48%"></b><span>May</span></div>
+                  <div><i style="height: 80%"></i><b style="height: 44%"></b><span>Jun</span></div>
+                  <div><i style="height: 44%"></i><b style="height: 28%"></b><span>Jul</span></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card current-visits">
+              <div class="card-heading">
+                <div>
+                  <h2>Current visits</h2>
+                  <p>Visits by region</p>
+                </div>
+                <button type="button" aria-label="Current visits options">•••</button>
+              </div>
+              <div class="donut-wrap">
+                <div class="donut"><span><strong>8,000</strong> Total</span></div>
+                <ul>
+                  <li><span><i class="dot green"></i>America</span><strong>3.5k</strong></li>
+                  <li><span><i class="dot blue"></i>Asia</span><strong>2.5k</strong></li>
+                  <li><span><i class="dot amber"></i>Europe</span><strong>1.5k</strong></li>
+                  <li><span><i class="dot red"></i>Africa</span><strong>500</strong></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="card conversion">
+              <div class="card-heading">
+                <div>
+                  <h2>Conversion rates</h2>
+                  <p><strong>+43%</strong> than last year</p>
+                </div>
+                <button type="button" aria-label="Conversion options">•••</button>
+              </div>
+              <div class="conversion-row"><span>Italy</span><i><b style="width: 78%"></b></i><strong>53%</strong></div>
+              <div class="conversion-row"><span>Japan</span><i><b style="width: 62%"></b></i><strong>42%</strong></div>
+              <div class="conversion-row"><span>China</span><i><b style="width: 49%"></b></i><strong>33%</strong></div>
+              <div class="conversion-row"><span>Canada</span><i><b style="width: 72%"></b></i><strong>52%</strong></div>
+              <div class="conversion-row"><span>France</span><i><b style="width: 28%"></b></i><strong>22%</strong></div>
+            </article>
+
+            <article class="card activity">
+              <div class="card-heading">
+                <div>
+                  <h2>Recent activity</h2>
+                  <p>Latest account events</p>
+                </div>
+                <a href="#">View all</a>
+              </div>
+              <ul>
+                <li><span class="activity-icon green">✓</span><div><strong>Order confirmed</strong><p>#SO-3214 · 2 min ago</p></div><b>$1,240</b></li>
+                <li><span class="activity-icon blue">+</span><div><strong>New user registered</strong><p>Olivia Martin · 18 min ago</p></div><b>Pro</b></li>
+                <li><span class="activity-icon amber">↗</span><div><strong>Campaign launched</strong><p>Fall collection · 1 hr ago</p></div><b>Live</b></li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
