@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A tighter-card restyle of the existing Material Kit dashboard."
+    />
+    <title>Dashboard - Tighter cards</title>
+    <style>
+      :root {
+        color: #1c252e;
+        background: #f4f6f8;
+        font-family: 'DM Sans', Inter, Arial, sans-serif;
+        font-synthesis: none;
+        --green: #00a76f;
+        --green-dark: #007867;
+        --muted: #637381;
+        --line: rgba(145, 158, 171, 0.18);
+        --shadow: 0 0 2px rgba(145, 158, 171, 0.2), 0 12px 24px -4px rgba(145, 158, 171, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100vh;
+        background: #fff;
+      }
+
+      button {
+        color: inherit;
+        font: inherit;
+      }
+
+      .shell {
+        display: grid;
+        min-height: 100vh;
+        grid-template-columns: 280px minmax(0, 1fr);
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        padding: 22px 20px;
+        border-right: 1px solid var(--line);
+        background: #fff;
+      }
+
+      .logo {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        background: var(--green);
+        box-shadow: 0 8px 18px rgba(0, 167, 111, 0.24);
+      }
+
+      .logo::before {
+        width: 17px;
+        height: 17px;
+        border: 5px solid white;
+        border-top-color: transparent;
+        border-radius: 50%;
+        content: '';
+        transform: rotate(30deg);
+      }
+
+      .workspace {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 22px;
+        padding: 10px 12px;
+        border: 0;
+        border-radius: 10px;
+        background: #f4f6f8;
+        text-align: left;
+      }
+
+      .workspace-avatar {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border-radius: 9px;
+        color: #7a0916;
+        background: #ffe4de;
+        font-weight: 700;
+      }
+
+      .workspace strong,
+      .workspace span {
+        display: block;
+      }
+
+      .workspace span {
+        margin-top: 2px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .nav {
+        display: grid;
+        gap: 4px;
+      }
+
+      .nav a {
+        display: flex;
+        min-height: 42px;
+        align-items: center;
+        gap: 14px;
+        padding: 8px 14px;
+        border-radius: 8px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .nav a.active {
+        color: var(--green-dark);
+        background: rgba(0, 167, 111, 0.08);
+      }
+
+      .nav-icon {
+        width: 21px;
+        text-align: center;
+        font-size: 17px;
+      }
+
+      .upgrade {
+        position: absolute;
+        right: 20px;
+        bottom: 22px;
+        left: 20px;
+        padding: 18px;
+        border-radius: 14px;
+        background: #f4f6f8;
+        text-align: center;
+      }
+
+      .upgrade img {
+        width: 94px;
+        margin: -54px auto 4px;
+      }
+
+      .upgrade strong {
+        display: block;
+        font-size: 14px;
+      }
+
+      .upgrade p {
+        margin: 6px 0 12px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .upgrade button {
+        width: 100%;
+        padding: 9px 12px;
+        border: 0;
+        border-radius: 8px;
+        color: white;
+        background: #1c252e;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .page {
+        min-width: 0;
+        background:
+          radial-gradient(circle at 82% 0%, rgba(0, 167, 111, 0.055), transparent 25%),
+          #fff;
+      }
+
+      .topbar {
+        display: flex;
+        height: 72px;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+        padding: 0 36px;
+      }
+
+      .icon-button,
+      .avatar {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border: 0;
+        border-radius: 50%;
+        background: transparent;
+        font-size: 18px;
+      }
+
+      .avatar {
+        margin-left: 4px;
+        color: #7a0916;
+        background: #ffe4de;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      main {
+        width: min(1240px, calc(100% - 64px));
+        margin: 0 auto;
+        padding: 26px 0 44px;
+      }
+
+      .eyebrow {
+        margin: 0 0 6px;
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0 0 24px;
+        font-size: clamp(26px, 3vw, 32px);
+        letter-spacing: -0.035em;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+
+      .stat {
+        position: relative;
+        min-height: 164px;
+        overflow: hidden;
+        padding: 18px;
+        border-radius: 14px;
+      }
+
+      .stat.green {
+        color: #004b50;
+        background: linear-gradient(135deg, #d8fbef, #c7f5de);
+      }
+
+      .stat.purple {
+        color: #4a1f63;
+        background: linear-gradient(135deg, #f3e7fb, #ead7f7);
+      }
+
+      .stat.orange {
+        color: #7a4100;
+        background: linear-gradient(135deg, #fff4d8, #ffe8b7);
+      }
+
+      .stat.red {
+        color: #7a0916;
+        background: linear-gradient(135deg, #ffe9e5, #ffd8d2);
+      }
+
+      .stat-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .stat-icon {
+        width: 38px;
+        height: 38px;
+      }
+
+      .trend {
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .stat-body {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 22px;
+      }
+
+      .stat-title {
+        margin-bottom: 5px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .stat-value {
+        font-size: 25px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+      }
+
+      .spark {
+        width: 78px;
+        height: 38px;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3;
+      }
+
+      .dashboard-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.8fr);
+        gap: 14px;
+      }
+
+      .card {
+        min-width: 0;
+        padding: 20px;
+        border: 1px solid rgba(145, 158, 171, 0.08);
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .card h2 {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      .card-subtitle {
+        margin: 5px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .more {
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        font-size: 20px;
+      }
+
+      .donut-wrap {
+        display: flex;
+        min-height: 245px;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+      }
+
+      .donut {
+        position: relative;
+        width: 168px;
+        height: 168px;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        background: conic-gradient(#00a76f 0 43.75%, #ffab00 43.75% 75%, #00b8d9 75% 93.75%, #ff5630 93.75%);
+      }
+
+      .donut::after {
+        position: absolute;
+        inset: 36px;
+        border-radius: 50%;
+        background: white;
+        content: '';
+      }
+
+      .donut-label {
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        display: grid;
+        place-content: center;
+        text-align: center;
+      }
+
+      .donut-label strong {
+        font-size: 23px;
+      }
+
+      .donut-label span {
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .legend {
+        display: grid;
+        gap: 13px;
+        min-width: 116px;
+      }
+
+      .legend-row {
+        display: grid;
+        grid-template-columns: 9px 1fr auto;
+        align-items: center;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .legend-row strong {
+        color: #1c252e;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+
+      .visits-chart {
+        position: relative;
+        height: 245px;
+        padding: 12px 8px 24px 36px;
+      }
+
+      .grid-lines {
+        position: absolute;
+        inset: 12px 8px 24px 36px;
+        background: repeating-linear-gradient(
+          to bottom,
+          transparent 0,
+          transparent calc(25% - 1px),
+          rgba(145, 158, 171, 0.18) 25%
+        );
+      }
+
+      .bars {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        height: 100%;
+        grid-template-columns: repeat(9, 1fr);
+        align-items: end;
+        gap: 10px;
+      }
+
+      .bar-set {
+        display: flex;
+        height: 100%;
+        align-items: end;
+        justify-content: center;
+        gap: 3px;
+      }
+
+      .bar {
+        width: 7px;
+        border-radius: 6px 6px 1px 1px;
+      }
+
+      .bar.a {
+        height: var(--a);
+        background: #00a76f;
+      }
+
+      .bar.b {
+        height: var(--b);
+        background: #ffab00;
+      }
+
+      .months {
+        position: absolute;
+        right: 8px;
+        bottom: 0;
+        left: 36px;
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        color: #919eab;
+        font-size: 10px;
+        text-align: center;
+      }
+
+      .chart-key {
+        display: flex;
+        gap: 16px;
+        margin-top: 2px;
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .chart-key span::before {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        margin-right: 6px;
+        border-radius: 50%;
+        background: var(--key);
+        content: '';
+      }
+
+      .wide {
+        grid-column: span 2;
+      }
+
+      .conversion {
+        display: grid;
+        gap: 14px;
+      }
+
+      .conversion-row {
+        display: grid;
+        grid-template-columns: 58px 1fr 30px;
+        align-items: center;
+        gap: 12px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .track {
+        height: 8px;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #f4f6f8;
+      }
+
+      .fill {
+        width: var(--width);
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #00a76f, #5be49b);
+      }
+
+      @media (max-width: 1080px) {
+        .shell {
+          grid-template-columns: 220px minmax(0, 1fr);
+        }
+
+        .upgrade {
+          display: none;
+        }
+
+        .stats {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .donut-wrap {
+          gap: 18px;
+        }
+      }
+
+      @media (max-width: 780px) {
+        .shell {
+          display: block;
+        }
+
+        .sidebar {
+          display: none;
+        }
+
+        .topbar {
+          height: 62px;
+          padding: 0 18px;
+        }
+
+        .topbar::before {
+          margin-right: auto;
+          color: var(--green);
+          content: 'MINIMAL';
+          font-size: 13px;
+          font-weight: 800;
+          letter-spacing: 0.12em;
+        }
+
+        main {
+          width: min(100% - 32px, 680px);
+          padding-top: 16px;
+        }
+
+        .dashboard-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .wide {
+          grid-column: auto;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .stat {
+          min-height: 150px;
+        }
+
+        .donut-wrap {
+          flex-direction: column;
+          padding: 8px 0;
+        }
+
+        .legend {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="logo" aria-label="Minimal"></div>
+        <button class="workspace" type="button">
+          <span class="workspace-avatar">T</span>
+          <span>
+            <strong>Team workspace</strong>
+            <span>Free</span>
+          </span>
+        </button>
+        <nav class="nav" aria-label="Main navigation">
+          <a class="active" href="#"><span class="nav-icon">⌂</span>Dashboard</a>
+          <a href="#"><span class="nav-icon">♙</span>User</a>
+          <a href="#"><span class="nav-icon">▣</span>Product</a>
+          <a href="#"><span class="nav-icon">✎</span>Blog</a>
+          <a href="#"><span class="nav-icon">↪</span>Sign in</a>
+          <a href="#"><span class="nav-icon">!</span>Not found</a>
+        </nav>
+        <div class="upgrade">
+          <img src="/assets/illustrations/illustration-dashboard.webp" alt="" />
+          <strong>Hi, Team</strong>
+          <p>Need more features?<br />Check our Pro solution.</p>
+          <button type="button">Upgrade to Pro</button>
+        </div>
+      </aside>
+
+      <div class="page">
+        <header class="topbar">
+          <button class="icon-button" type="button" aria-label="Search">⌕</button>
+          <button class="icon-button" type="button" aria-label="Language">🇺🇸</button>
+          <button class="icon-button" type="button" aria-label="Notifications">●</button>
+          <button class="avatar" type="button" aria-label="Account">A</button>
+        </header>
+
+        <main>
+          <p class="eyebrow">Overview</p>
+          <h1>Hi, Welcome back 👋</h1>
+
+          <section class="stats" aria-label="Summary metrics">
+            <article class="stat green">
+              <div class="stat-top">
+                <img class="stat-icon" src="/assets/icons/glass/ic-glass-bag.svg" alt="" />
+                <span class="trend">↗ +2.6%</span>
+              </div>
+              <div class="stat-body">
+                <div><div class="stat-title">Weekly sales</div><div class="stat-value">714k</div></div>
+                <svg class="spark" viewBox="0 0 78 38" aria-hidden="true">
+                  <path d="M2 32 C12 26 12 35 21 24 S36 5 44 14 S58 5 65 18 S72 27 76 9" />
+                </svg>
+              </div>
+            </article>
+
+            <article class="stat purple">
+              <div class="stat-top">
+                <img class="stat-icon" src="/assets/icons/glass/ic-glass-users.svg" alt="" />
+                <span class="trend">↘ -0.1%</span>
+              </div>
+              <div class="stat-body">
+                <div><div class="stat-title">New users</div><div class="stat-value">1.35m</div></div>
+                <svg class="spark" viewBox="0 0 78 38" aria-hidden="true">
+                  <path d="M2 10 C10 6 16 24 24 18 S37 10 43 23 S55 34 61 24 S69 12 76 18" />
+                </svg>
+              </div>
+            </article>
+
+            <article class="stat orange">
+              <div class="stat-top">
+                <img class="stat-icon" src="/assets/icons/glass/ic-glass-buy.svg" alt="" />
+                <span class="trend">↗ +2.8%</span>
+              </div>
+              <div class="stat-body">
+                <div><div class="stat-title">Purchase orders</div><div class="stat-value">1.72m</div></div>
+                <svg class="spark" viewBox="0 0 78 38" aria-hidden="true">
+                  <path d="M2 25 C10 7 15 9 23 19 S36 32 43 16 S53 7 61 24 S69 27 76 11" />
+                </svg>
+              </div>
+            </article>
+
+            <article class="stat red">
+              <div class="stat-top">
+                <img class="stat-icon" src="/assets/icons/glass/ic-glass-message.svg" alt="" />
+                <span class="trend">↗ +3.6%</span>
+              </div>
+              <div class="stat-body">
+                <div><div class="stat-title">Messages</div><div class="stat-value">234</div></div>
+                <svg class="spark" viewBox="0 0 78 38" aria-hidden="true">
+                  <path d="M2 11 C11 18 17 33 25 26 S37 12 45 18 S57 30 63 17 S70 8 76 13" />
+                </svg>
+              </div>
+            </article>
+          </section>
+
+          <section class="dashboard-grid" aria-label="Dashboard charts">
+            <article class="card">
+              <div class="card-header">
+                <div><h2>Current visits</h2><p class="card-subtitle">Visitors by region</p></div>
+                <button class="more" type="button" aria-label="More options">⋮</button>
+              </div>
+              <div class="donut-wrap">
+                <div class="donut">
+                  <div class="donut-label"><strong>8,000</strong><span>Total visits</span></div>
+                </div>
+                <div class="legend">
+                  <div class="legend-row"><i class="dot" style="background:#00a76f"></i><span>America</span><strong>3.5k</strong></div>
+                  <div class="legend-row"><i class="dot" style="background:#ffab00"></i><span>Asia</span><strong>2.5k</strong></div>
+                  <div class="legend-row"><i class="dot" style="background:#00b8d9"></i><span>Europe</span><strong>1.5k</strong></div>
+                  <div class="legend-row"><i class="dot" style="background:#ff5630"></i><span>Africa</span><strong>0.5k</strong></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-header">
+                <div><h2>Website visits</h2><p class="card-subtitle">(+43%) than last year</p></div>
+                <button class="more" type="button" aria-label="More options">⋮</button>
+              </div>
+              <div class="visits-chart">
+                <div class="grid-lines"></div>
+                <div class="bars">
+                  <div class="bar-set" style="--a:52%;--b:65%"><i class="bar a"></i><i class="bar b"></i></div>
+                  <div class="bar-set" style="--a:41%;--b:84%"><i class="bar a"></i><i class="bar b"></i></div>
+                  <div class="bar-set" style="--a:28%;--b:57%"><i class="bar a"></i><i class="bar b"></i></div>
+                  <div class="bar-set" style="--a:46%;--b:81%"><i class="bar a"></i><i class="bar b"></i></div>
+                  <div class="bar-set" style="--a:83%;--b:49%"><i class="bar a"></i><i class="bar b"></i></div>
+                  <div class="bar-set" style="--a:86%;--b:44%"><i class="bar a"></i><i class="bar b"></i></div>
+                  <div class="bar-set" style="--a:46%;--b:29%"><i class="bar a"></i><i class="bar b"></i></div>
+                  <div class="bar-set" style="--a:30%;--b:86%"><i class="bar a"></i><i class="bar b"></i></div>
+                  <div class="bar-set" style="--a:68%;--b:29%"><i class="bar a"></i><i class="bar b"></i></div>
+                </div>
+                <div class="months"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span></div>
+              </div>
+              <div class="chart-key"><span style="--key:#00a76f">Team A</span><span style="--key:#ffab00">Team B</span></div>
+            </article>
+
+            <article class="card wide">
+              <div class="card-header">
+                <div><h2>Conversion rates</h2><p class="card-subtitle">(+43%) than last year</p></div>
+                <button class="more" type="button" aria-label="More options">⋮</button>
+              </div>
+              <div class="conversion">
+                <div class="conversion-row"><span>Italy</span><div class="track"><div class="fill" style="--width:86%"></div></div><strong>53</strong></div>
+                <div class="conversion-row"><span>Japan</span><div class="track"><div class="fill" style="--width:66%"></div></div><strong>32</strong></div>
+                <div class="conversion-row"><span>China</span><div class="track"><div class="fill" style="--width:70%"></div></div><strong>33</strong></div>
+                <div class="conversion-row"><span>Canada</span><div class="track"><div class="fill" style="--width:82%"></div></div><strong>52</strong></div>
+                <div class="conversion-row"><span>France</span><div class="track"><div class="fill" style="--width:44%"></div></div><strong>13</strong></div>
+              </div>
+            </article>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
