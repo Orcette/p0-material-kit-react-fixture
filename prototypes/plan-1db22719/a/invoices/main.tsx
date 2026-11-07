@@ -112,7 +112,7 @@ function InvoicesPage() {
               <TableHead>
                 <TableRow>
                   <TableCell>Invoice</TableCell>
-                  <TableCell>Customer</TableCell>
+                  <TableCell>Client</TableCell>
                   <TableCell align="right">Amount</TableCell>
                   <TableCell>Status</TableCell>
                 </TableRow>
