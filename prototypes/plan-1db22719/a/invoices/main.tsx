@@ -56,9 +56,12 @@ function InvoicesPage() {
   return (
     <DashboardContent>
       <Box sx={{ mb: 5, display: 'flex', alignItems: 'center' }}>
-        <Typography variant="h4" sx={{ flexGrow: 1 }}>
-          Invoices
-        </Typography>
+        <Box sx={{ flexGrow: 1 }}>
+          <Typography variant="h4">Invoices</Typography>
+          <Typography variant="body2" sx={{ mt: 0.5, color: 'text.secondary' }}>
+            Track what customers owe you.
+          </Typography>
+        </Box>
       </Box>
 
       <Card>
