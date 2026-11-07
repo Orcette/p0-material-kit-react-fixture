@@ -1,5 +1,6 @@
 import { StrictMode, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -209,5 +210,5 @@ function RefundRow({ refund, selected, onSelect, onMenu }: { refund: Refund; sel
 }
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode><ThemeProvider><RefundsPage /></ThemeProvider></StrictMode>
+  <StrictMode><BrowserRouter><ThemeProvider><RefundsPage /></ThemeProvider></BrowserRouter></StrictMode>
 );

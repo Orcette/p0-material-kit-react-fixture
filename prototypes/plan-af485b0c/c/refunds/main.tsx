@@ -1,6 +1,7 @@
 import '../../../../src/global.css';
 
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import { useMemo, useState, StrictMode } from 'react';
 
 import Box from '@mui/material/Box';
@@ -225,4 +226,4 @@ function App() {
   return <ThemeProvider><DashboardLayout><RefundsPage /></DashboardLayout></ThemeProvider>;
 }
 
-createRoot(document.getElementById('root')!).render(<StrictMode><App /></StrictMode>);
+createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter><App /></BrowserRouter></StrictMode>);

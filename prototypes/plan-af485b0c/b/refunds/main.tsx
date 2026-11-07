@@ -2,6 +2,7 @@ import 'src/global.css';
 
 import { useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
@@ -270,4 +271,4 @@ function App() {
   return <ThemeProvider><DashboardLayout><RefundsPage /></DashboardLayout></ThemeProvider>;
 }
 
-createRoot(document.getElementById('root')!).render(<App />);
+createRoot(document.getElementById('root')!).render(<BrowserRouter><App /></BrowserRouter>);
