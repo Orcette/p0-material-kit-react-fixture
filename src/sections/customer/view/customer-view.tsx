@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Table from '@mui/material/Table';
 import Button from '@mui/material/Button';
@@ -10,6 +11,8 @@ import TableContainer from '@mui/material/TableContainer';
 
 import { DashboardContent } from 'src/layouts/dashboard';
 
+import { Iconify } from 'src/components/iconify';
+
 const ROWS = [
   ['Fixture Co', 'Springfield'],
   ['Sample Ltd', 'Riverton'],
@@ -18,9 +21,14 @@ const ROWS = [
 export function CustomerView() {
   return (
     <DashboardContent>
-      <Typography variant="h4" sx={{ mb: 5 }}>
-        Customers
-      </Typography>
+      <Box sx={{ mb: 5, display: 'flex', alignItems: 'center' }}>
+        <Typography variant="h4" sx={{ flexGrow: 1 }}>
+          Customers
+        </Typography>
+        <Button variant="contained" color="inherit" startIcon={<Iconify icon="mingcute:add-line" />}>
+          New customer
+        </Button>
+      </Box>
       <Card>
         <TableContainer>
           <Table>
@@ -39,7 +47,6 @@ export function CustomerView() {
           </Table>
         </TableContainer>
       </Card>
-      <Button sx={{ mt: 3 }}>Export</Button>
     </DashboardContent>
   );
 }

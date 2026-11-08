@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Table from '@mui/material/Table';
 import Button from '@mui/material/Button';
@@ -10,22 +11,29 @@ import TableContainer from '@mui/material/TableContainer';
 
 import { DashboardContent } from 'src/layouts/dashboard';
 
+import { Iconify } from 'src/components/iconify';
+
 const ROWS = [
-  ['Acme Parts', 'Net 30'],
-  ['Demo Supply', 'Net 60'],
+  ['Acme Supply', 'Paper'],
+  ['Demo Parts', 'Hardware'],
 ];
 
 export function VendorView() {
   return (
     <DashboardContent>
-      <Typography variant="h4" sx={{ mb: 5 }}>
-        Vendors
-      </Typography>
+      <Box sx={{ mb: 5, display: 'flex', alignItems: 'center' }}>
+        <Typography variant="h4" sx={{ flexGrow: 1 }}>
+          Vendors
+        </Typography>
+        <Button variant="contained" color="inherit" startIcon={<Iconify icon="mingcute:add-line" />}>
+          New vendor
+        </Button>
+      </Box>
       <Card>
         <TableContainer>
           <Table>
             <TableHead>
-              <TableRow><TableCell>Name</TableCell><TableCell>Terms</TableCell></TableRow>
+              <TableRow><TableCell>Name</TableCell><TableCell>Category</TableCell></TableRow>
             </TableHead>
             <TableBody>
               {ROWS.map((row) => (
@@ -39,7 +47,6 @@ export function VendorView() {
           </Table>
         </TableContainer>
       </Card>
-      <Button sx={{ mt: 3 }}>Export</Button>
     </DashboardContent>
   );
 }
