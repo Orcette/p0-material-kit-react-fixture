@@ -12,7 +12,6 @@ import TablePagination from '@mui/material/TablePagination';
 import { _users } from 'src/_mock';
 import { DashboardContent } from 'src/layouts/dashboard';
 
-import { Iconify } from 'src/components/iconify';
 import { Scrollbar } from 'src/components/scrollbar';
 
 import { TableNoData } from '../table-no-data';
@@ -51,12 +50,8 @@ export function UserView() {
         <Typography variant="h4" sx={{ flexGrow: 1 }}>
           Users
         </Typography>
-        <Button
-          variant="contained"
-          color="inherit"
-          startIcon={<Iconify icon="mingcute:add-line" />}
-        >
-          New user
+        <Button variant="contained" color="inherit">
+          Export
         </Button>
       </Box>
 

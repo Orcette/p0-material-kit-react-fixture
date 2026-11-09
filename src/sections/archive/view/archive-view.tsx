@@ -39,7 +39,9 @@ export function ArchiveView() {
           </Table>
         </TableContainer>
       </Card>
-      <Button sx={{ mt: 3 }}>Export</Button>
+      <Button variant="contained" color="inherit" sx={{ mt: 3 }}>
+        Export
+      </Button>
     </DashboardContent>
   );
 }

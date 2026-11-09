@@ -11,8 +11,6 @@ import TableContainer from '@mui/material/TableContainer';
 
 import { DashboardContent } from 'src/layouts/dashboard';
 
-import { Iconify } from 'src/components/iconify';
-
 const ROWS = [
   ['Fixture Co', 'Springfield'],
   ['Sample Ltd', 'Riverton'],
@@ -25,8 +23,8 @@ export function CustomerView() {
         <Typography variant="h4" sx={{ flexGrow: 1 }}>
           Customers
         </Typography>
-        <Button variant="contained" color="inherit" startIcon={<Iconify icon="mingcute:add-line" />}>
-          New customer
+        <Button variant="contained" color="inherit">
+          Export
         </Button>
       </Box>
       <Card>

@@ -11,8 +11,6 @@ import TableContainer from '@mui/material/TableContainer';
 
 import { DashboardContent } from 'src/layouts/dashboard';
 
-import { Iconify } from 'src/components/iconify';
-
 const ROWS = [
   ['Acme Supply', 'Paper'],
   ['Demo Parts', 'Hardware'],
@@ -25,8 +23,8 @@ export function VendorView() {
         <Typography variant="h4" sx={{ flexGrow: 1 }}>
           Vendors
         </Typography>
-        <Button variant="contained" color="inherit" startIcon={<Iconify icon="mingcute:add-line" />}>
-          New vendor
+        <Button variant="contained" color="inherit">
+          Export
         </Button>
       </Box>
       <Card>
