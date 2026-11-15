@@ -2,23 +2,24 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 
 const invoices = [
-  { invoice: "INV-1001", customer: "Acme Studio", amount: "$1,200", status: "Paid" },
-  { invoice: "INV-1002", customer: "Northwind Labs", amount: "$860", status: "Pending" },
-  { invoice: "INV-1003", customer: "Cedar Works", amount: "$2,450", status: "Overdue" },
-  { invoice: "INV-1004", customer: "Brightline Co.", amount: "$725", status: "Paid" },
+  { invoice: "INV-1001", customer: "Acme Studio", amount: "$1,200", status: "Paid", due: "Oct 18" },
+  { invoice: "INV-1002", customer: "Northwind Labs", amount: "$860", status: "Pending", due: "Nov 2" },
+  { invoice: "INV-1003", customer: "Cedar Works", amount: "$2,450", status: "Overdue", due: "Oct 7" },
+  { invoice: "INV-1004", customer: "Brightline Co.", amount: "$725", status: "Paid", due: "Nov 12" },
 ];
 
 export function mount(el: HTMLElement) {
   createRoot(el).render(
     <main>
       <h1>Invoices</h1>
-      <table>
+      <table style={{ background: "#eeeeee" }}>
         <thead>
           <tr>
             <th>Invoice</th>
             <th>Customer</th>
             <th>Amount</th>
             <th>Status</th>
+            <th>Due</th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@ export function mount(el: HTMLElement) {
               <td>{invoice.customer}</td>
               <td>{invoice.amount}</td>
               <td>{invoice.status}</td>
+              <td>{invoice.due}</td>
             </tr>
           ))}
         </tbody>
