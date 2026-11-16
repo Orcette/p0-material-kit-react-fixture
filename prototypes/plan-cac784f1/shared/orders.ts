@@ -1,3 +1,7 @@
+import { formatTotal } from './format';
+
+export { formatTotal };
+
 export type OrderStatus = 'Paid' | 'Processing' | 'Shipped' | 'Refunded';
 
 export type Order = {
