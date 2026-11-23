@@ -46,3 +46,7 @@ Distributed under the [MIT](https://github.com/minimal-ui-kit/minimal.free/blob/
 ## Contact us
 
 Email: support@minimals.cc
+
+## Agent runs
+
+This fixture proves that a Disco agent can run a plan end to end.
