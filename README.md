@@ -46,3 +46,7 @@ Distributed under the [MIT](https://github.com/minimal-ui-kit/minimal.free/blob/
 ## Contact us
 
 Email: support@minimals.cc
+
+## Questions
+
+For questions, contact us at support@minimals.cc.
