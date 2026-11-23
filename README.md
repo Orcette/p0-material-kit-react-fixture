@@ -46,3 +46,7 @@ Distributed under the [MIT](https://github.com/minimal-ui-kit/minimal.free/blob/
 ## Contact us
 
 Email: support@minimals.cc
+
+## Dependencies
+
+This project depends on Node.js and the packages declared in `package.json`.
