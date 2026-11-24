@@ -36,4 +36,3 @@ build
 tsconfig.tsbuildinfo
 .ncurc.js
 knip.jsonc
-disco-junit.xml
