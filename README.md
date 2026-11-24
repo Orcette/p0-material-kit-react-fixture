@@ -49,4 +49,4 @@ Email: support@minimals.cc
 
 ## Agent runs
 
-This fixture proves that a Disco agent can run a plan end to end.
+This fixture proves that a Disco agent can run a plan end to end. The agent also fixes review comments on its own pull request.
