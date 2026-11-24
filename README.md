@@ -46,3 +46,7 @@ Distributed under the [MIT](https://github.com/minimal-ui-kit/minimal.free/blob/
 ## Contact us
 
 Email: support@minimals.cc
+
+## Status labels
+
+Use the Label component for status labels. It is located in `src/components/label`.
