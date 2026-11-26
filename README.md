@@ -24,6 +24,10 @@
 - **Build:** `npm run build` or `yarn build`
 - Open browser: `http://localhost:3039`
 
+## Status labels
+
+Use the `Label` component for status labels.
+
 ## Upgrade to PRO Version
 
 | Minimal Free                | [Minimal Pro](https://material-ui.com/store/items/minimal-dashboard/)                                   |
