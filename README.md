@@ -46,5 +46,3 @@ Distributed under the [MIT](https://github.com/minimal-ui-kit/minimal.free/blob/
 ## Contact us
 
 Email: support@minimals.cc
-
-<!-- INI-117 R4 D3 live leg L-R4-4: a person merges this from Disco and one audit row is written. -->
